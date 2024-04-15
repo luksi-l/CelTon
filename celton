@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Function to get IP details
+get_ip_details() {
+    local ip_address=$1
+    local api_url="http://ip-api.com/json/$ip_address"
+    local response=$(curl -s "$api_url")
+    echo "$response"
+}
+
+# Parse command-line arguments
+while getopts ":t:" opt; do
+    case $opt in
+        t)
+            target="$OPTARG"
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument." >&2
+            exit 1
+            ;;
+    esac
+done
+
+# Check if target argument is provided
+if [ -z "$target" ]; then
+    echo "usage: celton -t TARGET" >&2
+    exit 1
+fi
+
+# Get IP details
+ip_details=$(get_ip_details "$target")
+
+# Print IP details
+echo "IP details:"
+echo "$ip_details"
