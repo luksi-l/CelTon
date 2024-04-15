@@ -14,20 +14,17 @@ Installation is simple
 
 2. cd CelTon
 
-3. python3 CelTon.py
+3. chmod +x celton
+
+4. ./celton
 ```
 
 ## Usage
 
 ```
-$python3 CelTon.py -h
-usage: CelTon.py [-h] -t TARGET
+$./celton
 
-A simple IP and URL info gathering tool
-
-options:
-  -h, --help  show this help message and exit
-  -t TARGET   Specify IP address or URL
+usage: ./celton -t TARGET
 ```
 
 ## Credits
